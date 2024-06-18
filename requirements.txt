@@ -1,5 +1,3 @@
 ifcopenshell
 streamlit
 tempfile
-os
-pathlib
