@@ -58,20 +58,20 @@ def valida_janelas (ifcs):
         element= open_ifc.by_type('IfcWindow')
         ifc_name = ifc.stem        
         if len(element) > 0:
-            st.success(f":green[O arquivo {ifc_name} tem {len(element)} paredes]", icon="✅") 
+            st.success(f":green[O arquivo {ifc_name} tem {len(element)} janelas]", icon="✅") 
         if len(element) <= 0:
-            st.success(f':red[O arquivo {ifc_name} NÃO TEM paredes]', icon="❌")
+            st.success(f':red[O arquivo {ifc_name} NÃO TEM janelas]', icon="❌")
 
 def valida_pisos (ifcs):
-    st.markdown('#2. Validação de janelas:')
+    st.markdown('#3. Validação de pisos:')
     for ifc in ifcs:
         open_ifc = ifcopenshell.open(ifc)
         element= open_ifc.by_type('IfcSlab')
         ifc_name = ifc.stem        
         if len(element) > 0:
-            st.success(f":green[O arquivo {ifc_name} tem {len(element)} paredes]", icon="✅") 
+            st.success(f":green[O arquivo {ifc_name} tem {len(element)} pisos]", icon="✅") 
         if len(element) <= 0:
-            st.success(f':red[O arquivo {ifc_name} NÃO TEM paredes]', icon="❌")
+            st.success(f':red[O arquivo {ifc_name} NÃO TEM pisos]', icon="❌")
 
 
 a = ifc_upload()

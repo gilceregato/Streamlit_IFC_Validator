@@ -24,10 +24,9 @@ st.markdown(
     A validação de arquivos IFC é um script básico gerado com ifcopenshell que permite classificar arquivos IFC enviados
     Atualmente ele é capaz de: \n
     1- Validar o schema IFC de arquivos de até 200 Mb, diferenciando IFC 2x3, IFC 4 ou IFC 4x3
+    2 - Validar se alguns tipos de elementos existem no arquivo IFC
 '''
 )
-
-ifc_path_list = []
 
 def ifc_upload ():
   ifc_files = st.file_uploader('Faça upload do seu IFC',['ifc'], accept_multiple_files=True)
@@ -66,6 +65,3 @@ def valida_schema (ifc_path_list,schema_ifc):
 a = ifc_upload()
 b = schema_ifc_padrao()
 valida_schema(a, b)
-
-if ifc_path_list not in st.session_state:
-  st.session_state[ifc_path_list] = a
