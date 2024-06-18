@@ -43,7 +43,7 @@ def ifc_upload ():
   return ifc_path_list
 
 def schema_ifc_padrao ():
-  schema_ifc = st.selectbox("Qual é o schema IFC definido no BEP para os arquivos?", ('IFC2x3', 'IFC4', 'IFC4x3'))
+  schema_ifc = st.selectbox("Qual é o schema IFC definido no BEP para os arquivos?", ('IFC2X3', 'IFC4', 'IFC4X3'))
   st.write(f'Você selecionou o schema: {schema_ifc}')
   return schema_ifc
 
