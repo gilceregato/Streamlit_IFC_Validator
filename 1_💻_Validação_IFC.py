@@ -27,6 +27,8 @@ st.markdown(
 '''
 )
 
+ifc_path_list = []
+
 def ifc_upload ():
   ifc_files = st.file_uploader('Faça upload do seu IFC',['ifc'], accept_multiple_files=True)
   for uploaded_file in ifc_files:
@@ -64,3 +66,6 @@ def valida_schema (ifc_path_list,schema_ifc):
 a = ifc_upload()
 b = schema_ifc_padrao()
 valida_schema(a, b)
+
+if ifc_path_list not in st.session_state:
+  st.session_state[ifc_path_list] = a
