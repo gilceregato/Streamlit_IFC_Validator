@@ -3,5 +3,3 @@ streamlit
 pandas                                                      
 lark                                                            
 numpy                                                     
-ifcopenshell.api                                                
-ifcopenshell.util
