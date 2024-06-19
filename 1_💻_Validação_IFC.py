@@ -3,6 +3,7 @@ import ifcopenshell
 import streamlit as st
 import tempfile
 import os
+from pathlib import Path
 
 st.set_page_config(
     page_title="Validação de IFCs",
