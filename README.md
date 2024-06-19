@@ -4,7 +4,7 @@ Este é um projeto simples usando Streamlit e IFCOpenShell para validar algumas 
 (O validador usa [Ifcopenshell](https://ifcopenshell.org/))
 
 ## Experimente:
-Acesso ao validador: https://ifctest.streamlit.app/
+Acesso ao validador: https://testvalidifc.streamlit.app/Elementos
 
 ## A fazer:
 [ ] Adicionar páginas de validação secundária
