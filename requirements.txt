@@ -2,4 +2,7 @@ ifcopenshell ==0.7.0.240406
 streamlit
 pandas                                                      
 lark                                                            
-numpy                                                     
+numpy
+ifcopenshell.util.element
+ifcopenshell.util.selector
+shapely    
