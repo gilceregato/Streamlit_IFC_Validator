@@ -1,4 +1,3 @@
-import numpy as np
 import streamlit as st
 import ifcopenshell
 import ifcopenshell.util.element

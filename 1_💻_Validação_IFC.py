@@ -1,19 +1,7 @@
-''' Projeto para validar o arquivo IFC que for colocado em upload'''
-import re                                                              
-import lark                                                            
-import numpy as np                                                     
-import ifcopenshell.api                                                
-import ifcopenshell.util
+''' Projeto para validar o arquivo IFC que for colocado em upload'''                                                   
 import ifcopenshell
-import ifcopenshell.util.element
-import ifcopenshell.util.selector
 import streamlit as st
 import tempfile
-import os
-from pathlib import Path
-
-
-
 
 st.set_page_config(
     page_title="Validação de IFCs",
