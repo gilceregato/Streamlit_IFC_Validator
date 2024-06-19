@@ -1,6 +1,9 @@
 import streamlit as st
 import ifcopenshell
+import ifcopenshell.util.element
+import ifcopenshell.util.selector
 import tempfile
+import pandas as pd
 import os
 from pathlib import Path
 
@@ -19,10 +22,7 @@ btn = st.sidebar.link_button('Acesse as especificações dos schemas IFC','https
 #####Cabeçalho do Dash
 st.markdown(
     '''
-    A validação de elementos permite verificar se os arquivos possuem:\n
-    - Paredes (IfcWall)\n
-    - Pisos (IfcSlab)\n
-    - Janelas (IfcWindow)
+    A validação de elementos permite verificar quais os tipos de elementos (Entities) o IFC possui e quantas ocorrências de cada tipo existem no modelo\n
 ''')
 
 def ifc_upload ():
@@ -40,41 +40,32 @@ def ifc_upload ():
       ifc_path_list.append(Path(ifc_path))
   return ifc_path_list
 
-def valida_paredes (ifcs):
-    st.markdown('#1. Validação de paredes:')
-    for ifc in ifcs:
-        open_ifc = ifcopenshell.open(ifc)
-        element= open_ifc.by_type('IfcWall')
-        ifc_name = ifc.stem        
-        if len(element) > 0:
-            st.success(f":green[O arquivo {ifc_name} tem {len(element)} paredes]", icon="✅") 
-        if len(element) <= 0:
-            st.success(f':red[O arquivo {ifc_name} NÃO TEM paredes]', icon="❌")
+def lista_classes_geral (ifcs):
+   for ifc in ifcs:
+    model = ifcopenshell.open(ifc)
+    elements = ifcopenshell.util.selector.filter_elements(model,'IfcElement')
+    st.markdown(f"Existem {len(elements)} elementos no modelo:")
+        
+    lista_classes = []
+    for element in elements:
+        classe_ifc=ifcopenshell.util.selector.get_element_value(element, 'class')
+        lista_classes.append(classe_ifc)
+    lista_classes=set(lista_classes)
 
-def valida_janelas (ifcs):
-    st.markdown('#2. Validação de janelas:')
-    for ifc in ifcs:
-        open_ifc = ifcopenshell.open(ifc)
-        element= open_ifc.by_type('IfcWindow')
-        ifc_name = ifc.stem        
-        if len(element) > 0:
-            st.success(f":green[O arquivo {ifc_name} tem {len(element)} janelas]", icon="✅") 
-        if len(element) <= 0:
-            st.success(f':red[O arquivo {ifc_name} NÃO TEM janelas]', icon="❌")
+    quantidades_elementos = []
+    for classe in lista_classes:
+        elements = ifcopenshell.util.selector.filter_elements(model,classe)
+        qtt_element = len(element)
+        quantidades_elementos.append(qtt_element)
 
-def valida_pisos (ifcs):
-    st.markdown('#3. Validação de pisos:')
-    for ifc in ifcs:
-        open_ifc = ifcopenshell.open(ifc)
-        element= open_ifc.by_type('IfcSlab')
-        ifc_name = ifc.stem        
-        if len(element) > 0:
-            st.success(f":green[O arquivo {ifc_name} tem {len(element)} pisos]", icon="✅") 
-        if len(element) <= 0:
-            st.success(f':red[O arquivo {ifc_name} NÃO TEM pisos]', icon="❌")
-
+    df_lista_classes=pd.DataFrame(lista_classes)
+    df_lista_classes.style.set_caption('Lista de Classes IFC nos modelos')
+       
+    df_quantidades_elementos = pd.DataFrame(quantidades_elementos)
+    df_lista_classes['Clase IFC']=df_lista_classes[0]
+    df_lista_classes['Ocorrências']=df_quantidades_elementos
+    df_lista_classes=df_lista_classes[['Clase IFC','Ocorrências']]
+    st.dataframe(df_lista_classes)  
 
 a = ifc_upload()
-valida_paredes(a)
-valida_janelas(a)
-valida_pisos(a)
+lista_classes_geral (a)
