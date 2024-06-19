@@ -3,5 +3,4 @@ streamlit
 pandas                                                      
 lark                                                            
 numpy
-ifcopenshell.util
 shapely    
