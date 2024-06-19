@@ -1,8 +1,6 @@
 ifcopenshell ==0.7.0.240406
 streamlit
-pandas
-lark
-re                                                              
+pandas                                                      
 lark                                                            
 numpy                                                     
 ifcopenshell.api                                                
