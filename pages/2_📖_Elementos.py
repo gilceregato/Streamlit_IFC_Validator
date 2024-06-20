@@ -69,8 +69,8 @@ def lista_classes_geral (ifcs):
         total_ocorrências += qtt_element
  
     #Cria DataFrame com todos os parâmetros coletados
-    st.markdown(f"Existem {len(quantidades_elementos)} diferentes tipos de elementos no modelo:")
-    st.markdown(f"Ao todo existem {total_ocorrências:.0f} elementos no modelo:")
+    st.markdown(f"Foram selecionados {len(quantidades_elementos)} diferentes tipos de elementos do modelo")
+    st.markdown(f"Ao todo existem {total_ocorrências:.0f} elementos dos {len(quantidades_elementos)} diferentes tipos selecionados no modelo")
     df_lista_classes=pd.DataFrame(classes_selecionadas)
     df_quantidades_elementos = pd.DataFrame(quantidades_elementos)
 
@@ -79,7 +79,7 @@ def lista_classes_geral (ifcs):
     df_lista_classes=df_lista_classes[['Classe IFC','Ocorrências']]
 
     #Exibe DataFrame conforme filtros adotados
-    st.markdown('Lista de elementos por tipo (classe) e número de ocorrências:')
+    st.markdown('\n Lista de elementos por tipo (classe) e número de ocorrências:')
     st.dataframe(df_lista_classes)
 
 a = ifc_upload()
