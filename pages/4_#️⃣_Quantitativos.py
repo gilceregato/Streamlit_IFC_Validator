@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 
 st.set_page_config(
-    page_title="Validação de Elementos Existentes",
+    page_title="Quantitativos dos elementos - EM DESENVOLVIMENTO",
     page_icon="#️⃣",
     layout="wide"
 )

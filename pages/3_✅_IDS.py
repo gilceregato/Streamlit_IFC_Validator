@@ -7,7 +7,7 @@ from pathlib import Path
 from ifctester import ids, reporter
 
 st.set_page_config(
-    page_title="Validação utilizando IDS",
+    page_title="Validação utilizando IDS - EM DESENVOLVIMENTO",
     page_icon="✅",
     layout="wide"
 )
