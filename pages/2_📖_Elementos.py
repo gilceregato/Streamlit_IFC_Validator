@@ -46,7 +46,6 @@ def lista_classes_geral (ifcs):
    for ifc in ifcs:
     model = ifcopenshell.open(ifc)
     elements = ifcopenshell.util.selector.filter_elements(model,'IfcElement')
-    st.markdown(f"Existem {len(elements)} elementos no modelo:")
 
 #Gera uma lista de classes únicas nos ifcs        
     lista_classes = []
@@ -68,6 +67,7 @@ def lista_classes_geral (ifcs):
         quantidades_elementos.append(qtt_element)
  
     #Cria DataFrame com todos os parâmetros coletados
+    st.markdown(f"Existem {len(quantidades_elementos)} elementos no modelo:")
     df_lista_classes=pd.DataFrame(classes_selecionadas)
     df_quantidades_elementos = pd.DataFrame(quantidades_elementos)
 
