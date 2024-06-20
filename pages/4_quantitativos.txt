@@ -1,0 +1,29 @@
+#Algumas anotações para o futuro:
+
+'''
+#Coletando outros parâmetros
+#A) Coletando outras propriedades
+    type_name = []
+    pset_list = []
+    qto_list = []
+
+    for element in elements:
+      element_type = ifcopenshell.util.element.get_type(element) #Todos os atributos de element_type
+      element_type_name = ifcopenshell.util.element.get_type(element)[2] #apenas Type_name
+      type_name.append(element_type_name)
+
+
+      element_pset = (ifcopenshell.util.element.get_psets(element, psets_only=True)) #Todos os atributos de Pset
+      pset_list.append(element_pset)
+      df_pset_list = pd.json_normalize(pset_list, sep="_") #dando "flatten" na lista de psets
+    
+      element_quantities = ifcopenshell.util.element.get_psets(element, qtos_only=True) #Todos os atributos de Quantities
+      qto_list.append(element_quantities)
+      df_qto_list1= pd.json_normalize(qto_list,sep="_") #dando "flatten" na lista de qtos
+      d_flat = df_qto_list1.to_dict()
+      df_qto_list=pd.json_normalize(d_flat,sep='_') #dando um segundo "flatten"
+
+    df_type_name=pd.DataFrame(type_name)
+    df_type_name=pd.concat([df_todas_as_classes,df_type_name],axis=1,ignore_index=True)
+    df_type_name
+'''

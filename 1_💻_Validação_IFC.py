@@ -23,7 +23,8 @@ st.markdown(
     A validação de arquivos IFC é um script básico gerado com ifcopenshell que permite classificar arquivos IFC enviados
     Atualmente ele é capaz de: \n
     1- Validar o schema IFC de arquivos de até 200 Mb, diferenciando IFC 2x3, IFC 4 ou IFC 4x3 \n
-    2 - Validar se alguns tipos de elementos existem no arquivo IFC
+    2 - Quantificar o nº de ocorrências de cada Entity no IFC, inclusive permitindo filtros;\n
+    3 - Carregar arquivos IDS e IFC para validação (ainda não executa a validação)\n
 '''
 )
 

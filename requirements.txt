@@ -3,4 +3,6 @@ streamlit
 pandas                                                      
 lark                                                            
 numpy
-shapely    
+shapely
+ifctester
+pystache
