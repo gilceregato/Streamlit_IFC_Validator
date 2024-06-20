@@ -61,13 +61,16 @@ def lista_classes_geral (ifcs):
 
     #a) Quantidades de ocorrências
     quantidades_elementos = []
+    total_ocorrências = 0
     for classe in classes_selecionadas:
         elements = ifcopenshell.util.selector.filter_elements(model,classe)
         qtt_element = len(element)
         quantidades_elementos.append(qtt_element)
+        total_ocorrências += qtt_element
  
     #Cria DataFrame com todos os parâmetros coletados
-    st.markdown(f"Existem {len(quantidades_elementos)} elementos no modelo:")
+    st.markdown(f"Existem {len(quantidades_elementos)} diferentes tipos de elementos no modelo:")
+    st.markdown(f"Ao todo existem {total_ocorrências:.0f} elementos no modelo:")
     df_lista_classes=pd.DataFrame(classes_selecionadas)
     df_quantidades_elementos = pd.DataFrame(quantidades_elementos)
 
